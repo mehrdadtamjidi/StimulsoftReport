@@ -1,0 +1,44 @@
+﻿@using Stimulsoft.Report.Mvc
+@using Stimulsoft.Report.Web
+
+@{
+    ViewData["Title"] = "Print";
+    Layout = null;
+}
+
+<h2>Show Report in the Viewer</h2>
+
+<table>
+    <tr>
+        <td class="reports" valign="top">
+            <div style="width: 150px;">
+                @Html.ActionLink("Simple List Employee", "Index", new { id = "1" })
+                <br />
+
+                <br /><br />
+                @Html.ActionLink("Simple List Product", "Index", new { id = "2" })
+                <br />
+            </div>
+        </td>
+        <td style="width: 100%;" valign="top">
+          @Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
+{
+    Theme = StiViewerTheme.Office2013WhiteTeal,
+    Appearance =
+        {
+            ScrollbarsMode = true
+        },
+    Actions =
+        {
+            GetReport = "GetReport",
+            ViewerEvent = "ViewerEvent",
+            ExportReport = "ExportReport"
+        }
+})
+        </td>
+    </tr>
+</table>
+
+
+
+
